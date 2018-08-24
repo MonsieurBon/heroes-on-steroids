@@ -1,7 +1,9 @@
 import {combineReducers} from 'redux';
 import {IAppState} from './root.model';
-import {heroReducer} from './hero.reducer';
+import {selectedHeroReducer} from './selectedHero.reducer';
+import {heroesReducer} from './heroes.reducer';
 
 export const rootReducer = combineReducers<IAppState>({
-  hero: heroReducer
+  heroes: heroesReducer,
+  selectedHero: selectedHeroReducer
 });

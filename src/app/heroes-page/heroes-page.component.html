@@ -1,1 +1,5 @@
-<app-heroes [hero]="hero$ | async" (heroChanged)="heroChanged($event)"></app-heroes>
+<app-heroes [selectedHero]="selectedHero$ | async"
+            [heroes]="heroes$ | async"
+            (selectedHeroChanged)="selectedHeroChanged($event)"
+            (heroSelected)="heroSelected($event)"
+></app-heroes>

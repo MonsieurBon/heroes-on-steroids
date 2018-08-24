@@ -3,7 +3,6 @@ import {IHeroState} from '../store/root.model';
 import {FormControl} from '@angular/forms';
 import {Subject} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
-import {HEROES} from '../mock-heroes';
 
 @Component({
   selector: 'app-heroes',
@@ -12,12 +11,11 @@ import {HEROES} from '../mock-heroes';
 })
 export class HeroesComponent implements OnInit, OnChanges {
 
-  heroes = HEROES;
+  @Input() heroes: IHeroState[];
+  @Input() selectedHero: IHeroState;
 
-  selectedHero: IHeroState;
-
-  @Input() hero: IHeroState;
-  @Output() heroChanged = new EventEmitter<IHeroState>();
+  @Output() selectedHeroChanged = new EventEmitter<IHeroState>();
+  @Output() heroSelected = new EventEmitter<IHeroState>();
 
   nameField = new FormControl();
 
@@ -33,8 +31,8 @@ export class HeroesComponent implements OnInit, OnChanges {
     this.heroChange.pipe(
       distinctUntilChanged()
     ).subscribe(name => {
-      const hero = { ...this.hero, name };
-      this.heroChanged.emit(hero);
+      const hero = { ...this.selectedHero, name };
+      this.selectedHeroChanged.emit(hero);
     });
   }
 
@@ -45,7 +43,6 @@ export class HeroesComponent implements OnInit, OnChanges {
   }
 
   onSelect(hero: IHeroState): void {
-    this.selectedHero = hero;
-    this.nameField.setValue(this.selectedHero.name);
+    this.heroSelected.emit(hero);
   }
 }

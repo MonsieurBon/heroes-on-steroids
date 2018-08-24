@@ -3,7 +3,7 @@ import {dispatch, select} from '@angular-redux/store';
 import {IHeroState} from '../store/root.model';
 import {Observable} from 'rxjs';
 import {AnyAction} from 'redux';
-import {updateHeroAction} from '../store/hero.action';
+import {heroSelectedAction, updateSelectedHeroAction} from '../store/hero.action';
 
 @Component({
   selector: 'app-heroes-page',
@@ -12,7 +12,8 @@ import {updateHeroAction} from '../store/hero.action';
 })
 export class HeroesPageComponent implements OnInit {
 
-  @select(['hero']) hero$: Observable<IHeroState>;
+  @select(['selectedHero']) selectedHero$: Observable<IHeroState>;
+  @select(['heroes']) heroes$: Observable<IHeroState[]>;
 
   constructor() { }
 
@@ -20,8 +21,13 @@ export class HeroesPageComponent implements OnInit {
   }
 
   @dispatch()
-  heroChanged(hero: IHeroState): AnyAction {
-    return updateHeroAction(hero);
+  selectedHeroChanged(hero: IHeroState): AnyAction {
+    return updateSelectedHeroAction(hero);
+  }
+
+  @dispatch()
+  heroSelected(hero: IHeroState): AnyAction {
+    return heroSelectedAction(hero);
   }
 
 }

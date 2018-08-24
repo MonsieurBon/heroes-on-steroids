@@ -1,5 +1,6 @@
 export interface IAppState {
-  hero?: IHeroState;
+  heroes?: IHeroState[];
+  selectedHero?: IHeroState;
 }
 
 export interface IHeroState {
