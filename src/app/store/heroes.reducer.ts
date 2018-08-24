@@ -16,7 +16,7 @@ const INITIAL_STATE: IHeroState[] = [
 ];
 
 export function heroesReducer(state: IHeroState[] = INITIAL_STATE, action: AnyAction): IHeroState[] {
-  switch(action.type) {
+  switch (action.type) {
     case HeroActionTypes.UpdateSelectedHeroAction:
       const updatedHero: IHeroState = action.payload;
       return state.map(hero => {

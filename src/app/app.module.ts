@@ -9,12 +9,14 @@ import {createLogger} from 'redux-logger';
 import {IAppState} from './store/root.model';
 import {rootReducer} from './store/root.reducer';
 import {HeroesPageComponent} from './heroes-page/heroes-page.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
-    HeroesPageComponent
+    HeroesPageComponent,
+    HeroDetailComponent
   ],
   imports: [
     BrowserModule,
