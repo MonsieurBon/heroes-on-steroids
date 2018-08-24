@@ -2,6 +2,6 @@
 <div><span>id: </span>{{hero.id}}</div>
 <div>
   <label>name:
-    <input [(ngModel)]="hero.name" placeholder="name">
+    <input [formControl]="nameField" (keyup)="onHeroNameKeyUp()" placeholder="name">
   </label>
 </div>
