@@ -16,6 +16,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailPageComponent } from './hero-detail-page/hero-detail-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
+import {NgReduxRouter, NgReduxRouterModule} from '@angular-redux/router';
+import {RoutingEpicsService} from './service/routing-epics.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
     BrowserModule,
     ReactiveFormsModule,
     NgReduxModule,
+    NgReduxRouterModule.forRoot(),
     AppRoutingModule
   ],
   providers: [],
@@ -39,11 +42,14 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
 export class AppModule {
   constructor(
     private ngRedux: NgRedux<IAppState>,
+    private ngReduxRouter: NgReduxRouter,
     private devTools: DevToolsExtension,
-    private httpEpics: HttpEpicsService
+    private httpEpics: HttpEpicsService,
+    private routingEpics: RoutingEpicsService
   ) {
     const rootEpic = combineEpics(
-      httpEpics.loadHeroes
+      httpEpics.loadHeroes,
+      routingEpics.selectHero
     );
 
     const epicMiddleware = createEpicMiddleware();
@@ -56,5 +62,7 @@ export class AppModule {
     );
 
     epicMiddleware.run(rootEpic);
+
+    this.ngReduxRouter.initialize();
   }
 }

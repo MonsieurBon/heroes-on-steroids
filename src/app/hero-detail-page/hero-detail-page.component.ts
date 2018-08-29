@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {dispatch, select} from '@angular-redux/store';
 import {Observable} from 'rxjs';
 import {IHeroState} from '../store/root.model';
-import {ActivatedRoute} from '@angular/router';
-import {Location} from '@angular/common';
-import {map} from 'rxjs/internal/operators';
 import {updateSelectedHeroAction} from '../store/hero.action';
 
 @Component({
@@ -14,18 +11,11 @@ import {updateSelectedHeroAction} from '../store/hero.action';
 })
 export class HeroDetailPageComponent implements OnInit {
 
-  @select(['heroes']) heroes$: Observable<IHeroState[]>;
-  selectedHero$: Observable<IHeroState>;
+  @select(['selectedHero']) selectedHero$: Observable<IHeroState>;
 
-  constructor(
-    private route: ActivatedRoute
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.selectedHero$ = this.heroes$.pipe(
-      map(heroes => heroes.find(hero => hero.id === id))
-    );
   }
 
   @dispatch()

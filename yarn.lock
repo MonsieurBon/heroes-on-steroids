@@ -97,6 +97,10 @@
     "@angular-devkit/core" "0.7.5"
     rxjs "^6.0.0"
 
+"@angular-redux/router@^9.0.0":
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-redux/router/-/router-9.0.0.tgz#f7c096c79cefe247724e6bbb52b16731f4d496a4"
+
 "@angular-redux/store@^9.0.0":
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/@angular-redux/store/-/store-9.0.0.tgz#7de913fe8d9b28941a1aa798397f3a51f16e20a6"
