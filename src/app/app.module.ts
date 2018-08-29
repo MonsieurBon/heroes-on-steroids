@@ -15,6 +15,7 @@ import {HttpEpicsService} from './service/http-epics.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailPageComponent } from './hero-detail-page/hero-detail-page.component';
+import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HeroDetailPageComponent } from './hero-detail-page/hero-detail-page.com
     HeroesPageComponent,
     HeroDetailComponent,
     DashboardComponent,
-    HeroDetailPageComponent
+    HeroDetailPageComponent,
+    DashboardPageComponent
   ],
   imports: [
     BrowserModule,
