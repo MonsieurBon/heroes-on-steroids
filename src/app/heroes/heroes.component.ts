@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {IHeroState} from '../store/root.model';
 
 @Component({
@@ -9,18 +9,10 @@ import {IHeroState} from '../store/root.model';
 export class HeroesComponent implements OnInit {
 
   @Input() heroes: IHeroState[];
-  @Input() selectedHero: IHeroState;
-
-  @Output() selectedHeroChanged = new EventEmitter<IHeroState>();
-  @Output() heroSelected = new EventEmitter<IHeroState>();
 
   constructor() { }
 
   ngOnInit() {
 
-  }
-
-  onSelect(hero: IHeroState): void {
-    this.heroSelected.emit(hero);
   }
 }

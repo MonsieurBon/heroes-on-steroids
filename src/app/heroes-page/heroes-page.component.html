@@ -1,5 +1,1 @@
-<app-heroes [selectedHero]="selectedHero$ | async"
-            [heroes]="heroes$ | async"
-            (selectedHeroChanged)="selectedHeroChanged($event)"
-            (heroSelected)="heroSelected($event)"
-></app-heroes>
+<app-heroes [heroes]="heroes$ | async"></app-heroes>

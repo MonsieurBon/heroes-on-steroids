@@ -3,6 +3,7 @@ import {IHeroState} from '../store/root.model';
 import {FormControl} from '@angular/forms';
 import {Subject} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-hero-detail',
@@ -19,7 +20,9 @@ export class HeroDetailComponent implements OnInit, OnChanges {
 
   private heroChange = new Subject<string>();
 
-  constructor() { }
+  constructor(
+    private location: Location
+  ) { }
 
   ngOnInit() {
     this.heroChange.pipe(
@@ -38,6 +41,10 @@ export class HeroDetailComponent implements OnInit, OnChanges {
 
   onHeroNameKeyUp() {
     this.heroChange.next(this.nameField.value);
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }
